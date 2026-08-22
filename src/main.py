@@ -31,6 +31,5 @@ while True:
         last_idiom = next_idiom
         used_idiom.append(next_idiom)
 
-
     else:
         print('接龙失败')
