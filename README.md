@@ -59,6 +59,9 @@ data/
 
 成语列表存储在 `data/idiom_list.txt` 中，每行一个成语，共收录约 30000+ 个成语。
 
+## 未来计划
+详见 [TODO.md](./TODO.md)
+
 ## 作者
 
 SunFox772
