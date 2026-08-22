@@ -60,6 +60,7 @@ data/
 成语列表存储在 `data/idiom_list.txt` 中，每行一个成语，共收录约 30000+ 个成语。
 
 ## 未来计划
+
 详见 [TODO.md](./TODO.md)
 
 ## 作者
@@ -70,10 +71,14 @@ SunFox772
 
 MIT License
 
-## 鸣谢 / 数据来源
+## 鸣谢
 
+详见 [CONTRIBUTORS.md](./CONTRIBUTORS.md)
+
+
+## 数据来源
 成语数据来自 [crazywhalecc/idiom-database](https://github.com/crazywhalecc/idiom-database)
 
 - 数据文件：`data/idiom_list.txt`
 - 来源协议：MIT License
-- 原始仓库：[crazywhalecc/idiom-database](crazywhalecc/idiom-database)
+- 原始仓库：[crazywhalecc/idiom-database](https://github.com/crazywhalecc/idiom-database)
