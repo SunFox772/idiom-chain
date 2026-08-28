@@ -20,11 +20,13 @@
 
 ```
 src/
-├── main.py              # 程序入口
+├── main.py # 程序入口
+├── core/
+│ └── running.py # 游戏核心逻辑（主循环）
 └── lib/
-    └── idiom_manager.py # 成语加载模块
+└── idiom_manager.py # 成语加载模块
 data/
-└── idiom_list.txt       # 成语词库（每行一个成语）
+└── idiom_list.txt # 成语词库（每行一个成语）
 ```
 
 ## 使用方法
