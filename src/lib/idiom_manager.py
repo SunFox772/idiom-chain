@@ -1,7 +1,9 @@
 # src/lib/idiom_manager.py
-def load_idiom_list()  -> list:
-    """从sdata/idiom_list.txt中加载成语列表"""
-    with open('data/idiom_list.txt', 'r', encoding='utf-8') as f:
-        idiom_list = f.read().splitlines()
+from pathlib import Path
 
-    return idiom_list
+
+def load_idiom_list() -> list:
+    """从 data/idiom_list.txt 中加载成语列表"""
+    file_path = Path(__file__).parent.parent.parent / "data" / "idiom_list.txt"
+    with open(file_path, 'r', encoding='utf-8') as f:
+        return f.read().splitlines()

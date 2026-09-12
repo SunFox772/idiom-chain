@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>成语接龙</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: "Microsoft YaHei", sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px 50px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            text-align: center;
+            max-width: 550px;
+            width: 100%;
+        }
+        h1 { font-size: 28px; color: #2c3e50; margin-bottom: 10px; }
+        .subtitle { color: #95a5a6; font-size: 14px; margin-bottom: 25px; }
+        .idiom {
+            font-size: 42px;
+            font-weight: bold;
+            color: #2c3e50;
+            padding: 20px 0;
+            margin: 10px 0 5px 0;
+            letter-spacing: 4px;
+        }
+        .hint {
+            color: #7f8c8d;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+        .hint span { color: #e74c3c; font-weight: bold; }
+        .input-group {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        input {
+            font-size: 18px;
+            padding: 12px 20px;
+            width: 250px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+        input:focus { border-color: #667eea; }
+        .btn {
+            font-size: 18px;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .btn:active { transform: scale(0.95); }
+        .btn-primary { background: #667eea; color: white; }
+        .btn-primary:hover { box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4); }
+        .btn-success { background: #27ae60; color: white; }
+        .btn-success:hover { box-shadow: 0 4px 15px rgba(39, 174, 96, 0.4); }
+        .btn-danger { background: #e74c3c; color: white; }
+        .btn-danger:hover { box-shadow: 0 4px 15px rgba(231, 76, 60, 0.4); }
+        .feedback {
+            margin: 18px 0;
+            padding: 10px;
+            border-radius: 8px;
+            font-size: 16px;
+            min-height: 45px;
+        }
+        .feedback.success { background: #d5f5e3; color: #1a7a3a; }
+        .feedback.error { background: #fadbd8; color: #922b21; }
+        .stats {
+            margin-top: 15px;
+            color: #95a5a6;
+            font-size: 14px;
+        }
+        .btn-group { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 10px; }
+        @media (max-width: 480px) {
+            .container { padding: 25px 20px; }
+            .idiom { font-size: 32px; }
+            input { width: 100%; }
+            .input-group { flex-direction: column; align-items: center; }
+            .btn { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🀄 成语接龙</h1>
+        <div class="subtitle">— 妙语连珠 —</div>
+
+        <div class="idiom">{{ game.get_current_idiom() }}</div>
+        <div class="hint">请输入以「<span>{{ game.get_last_char() }}</span>」开头的成语</div>
+
+        <form method="post">
+            <div class="input-group">
+                <input type="text" name="idiom" placeholder="输入成语..." autofocus required>
+                <button type="submit" class="btn btn-primary">接龙</button>
+            </div>
+        </form>
+
+        {% if message %}
+        <div class="feedback {{ 'success' if success else 'error' }}">{{ message }}</div>
+        {% endif %}
+
+        <div class="stats">已接龙：{{ game.get_used_count() }} 个</div>
+
+        <div class="btn-group">
+            <a href="{{ url_for('reset') }}"><button class="btn btn-success">🔄 重新开始</button></a>
+            <a href="{{ url_for('index') }}"><button class="btn btn-danger">🚪 退出</button></a>
+        </div>
+    </div>
+</body>
+</html>
